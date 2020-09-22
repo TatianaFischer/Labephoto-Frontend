@@ -1,2 +1,2 @@
-# ART-GALLERY-Frontend
+# Labephoto-Frontend
 Gerenciador de imagem de quadros de artistas.
