@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   PageConteiner,
   Logo,
@@ -11,10 +12,13 @@ import LogoImage from "./logo-color.png";
 //material ui:
 import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputAdorment from "@material-ui/core/InputAdornment";
-import InconButton from "@material-ui/core/IconButton";
 
 const LoginPage = () => {
+  let history = useHistory();
+
+  const goToSignupPage = () => {
+    history.push("/users/signup");
+  };
   return (
     <PageConteiner>
       <header>
@@ -55,7 +59,7 @@ const LoginPage = () => {
         <b>Entrar</b>
       </Button>
 
-      <Button2>Criar conta</Button2>
+      <Button2 onClick={goToSignupPage}>Criar conta</Button2>
     </PageConteiner>
   );
 };
