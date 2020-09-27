@@ -45,7 +45,7 @@ const LoginPage = () => {
         <OutlinedInput
           id="password"
           type="password"
-          placeholder="Senha (minímo 6 caracteres)"
+          placeholder="Senha (mínimo 6 caracteres)"
           margin="normal"
           fullWidth
           variant="outlined"

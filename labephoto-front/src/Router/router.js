@@ -4,7 +4,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 // pages
 import SignUpPage from "../components/SignUpPage";
 import LoginPage from "../components/LoginPage";
-import HomePage from "../components/HomePage";
+import Feed from "../components/Feed";
 import CreateImagePage from "../components/CreateImagePage";
 // import ImageDetailsPage from "../components/ImageDetailsPage";
 
@@ -24,7 +24,7 @@ const Router = () => {
         </Route>
 
         <Route exact path="/images/feed">
-          <HomePage />
+          <Feed />
         </Route>
       </Switch>
     </BrowserRouter>
