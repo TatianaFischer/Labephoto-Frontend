@@ -15,12 +15,14 @@ import LogoImage from "./logo-color.png";
 import ImgTest from "./img-test.jpg";
 
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+
 const Feed = () => {
   let history = useHistory();
 
   const goToImageCreatePage = () => {
     history.push("/images/");
   };
+
   return (
     <PageConteiner>
       <Logo src={LogoImage} />
