@@ -9,7 +9,8 @@ import {
   ImagesContainer,
   FeedImage,
   Footer,
-  Button,
+  ButtonIcon,
+  Legend,
 } from "./styles";
 import LogoImage from "./logo-color.png";
 import ImgTest from "./img-test.jpg";
@@ -43,14 +44,15 @@ const Feed = () => {
       </ImagesContainer>
 
       <Footer>
-        <Button>
+        <ButtonIcon>
           <AddCircleIcon
             onClick={goToImageCreatePage}
             fontSize="large"
             color="action"
             titleAccess="Adicionar nova imagem"
           />
-        </Button>
+        </ButtonIcon>
+        <Legend>Add</Legend>
       </Footer>
     </PageConteiner>
   );
