@@ -22,7 +22,7 @@ export const ImagesContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   max-width: 810px;
 `;
 
