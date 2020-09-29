@@ -7,8 +7,8 @@ export const PageConteiner = styled.div`
   font-family: sans-serif;
 `;
 export const Logo = styled.img`
-  width: 300px;
-  height: 50px;
+  width: 240px;
+  height: 40px;
   margin-top: 88px;
   margin-bottom: 28px;
 `;
@@ -17,22 +17,48 @@ export const Tittle = styled.div`
   font-size: 18px;
   color: rgb(95, 99, 104);
 `;
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 328px;
+`;
+export const Button = styled.button`
+  width: 328px;
+  height: 42px;
+  background-color: rgb(244, 244, 244); /*google*/
+  border-color: rgb(95, 99, 104);
+  border-width: 5px;
+  color: rgb(95, 99, 104);
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin-top: 16px;
+  border: none;
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+  :hover {
+    cursor: pointer;
+    background-color: rgb(244, 244, 244, 0.6);
+    text-decoration: underline;
+  }
+`;
 
-export const ImagesContainer = styled.div`
+export const ButtonIncon = styled.button`
+  border-radius: 100%;
+  border: 0 none;
+  padding: 0;
+  margin: 2px 0;
+  outline: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap-reverse;
-  max-width: 810px;
-`;
 
-export const FeedImage = styled.img`
-  width: 250px;
-  height: 250px;
-  margin: 10px;
   :hover {
-    opacity: 0.5;
     cursor: pointer;
+    border: solid 2px rgb(0, 0, 0, 0.1);
   }
 `;
 
@@ -52,23 +78,6 @@ export const Footer = styled.div`
 
   :hover {
     background-color: rgb(255, 255, 255);
-  }
-`;
-
-export const ButtonIcon = styled.button`
-  border-radius: 100%;
-  border: 0 none;
-  padding: 0;
-  margin: 2px 0;
-  outline: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  :hover {
-    cursor: pointer;
-    border: solid 2px rgb(0, 0, 0, 0.1);
   }
 `;
 
