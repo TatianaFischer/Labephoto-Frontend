@@ -22,14 +22,19 @@ export const ImagesContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   max-width: 810px;
+  flex-direction: row;
+  margin-bottom: 85px;
+
+  /* mudar para grid quando for fazer a responsividade */
 `;
 
 export const FeedImage = styled.img`
   width: 250px;
   height: 250px;
-  margin: 10px;
+  margin: 10px 10px 0px 5px;
+
   :hover {
     opacity: 0.5;
     cursor: pointer;
@@ -75,4 +80,10 @@ export const ButtonIcon = styled.button`
 export const Legend = styled.span`
   font-size: 12px;
   color: rgb(95, 99, 104);
+`;
+
+export const Subtitle = styled.h6`
+  margin: 0 0 0 10px;
+  padding: 0;
+  color: rgb(95, 99, 104, 0.35);
 `;

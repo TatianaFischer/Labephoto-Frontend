@@ -67,7 +67,6 @@ const LoginPage = () => {
             fullWidth
             variant="outlined"
             InputLabelProps={{ shrikn: true }}
-            margin="none"
             style={{ margin: 8 }}
             required
             onChange={(e) => setEmailOrNick(e.target.value)}
@@ -82,7 +81,6 @@ const LoginPage = () => {
             fullWidth
             variant="outlined"
             InputLabelProps={{ shrikn: true }}
-            margin="none"
             style={{ margin: 8 }}
             required
             onChange={(e) => setPassword(e.target.value)}

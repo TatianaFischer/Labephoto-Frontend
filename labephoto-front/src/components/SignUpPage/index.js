@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {
@@ -101,7 +101,6 @@ const SignUpPage = () => {
             fullWidth
             variant="outlined"
             InputLabelProps={{ shrikn: true }}
-            margin="none"
             style={{ margin: 8 }}
             required
             value={email}
@@ -116,7 +115,6 @@ const SignUpPage = () => {
             fullWidth
             variant="outlined"
             InputLabelProps={{ shrikn: true }}
-            margin="none"
             style={{ margin: 8 }}
             required
             value={password}
