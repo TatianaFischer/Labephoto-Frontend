@@ -22,6 +22,8 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 328px;
+  margin: 0 0 80px 0;
+  color: rgb(95, 99, 104);
 `;
 export const Button = styled.button`
   width: 328px;
