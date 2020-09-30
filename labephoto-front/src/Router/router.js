@@ -19,7 +19,7 @@ const Router = () => {
           <SignUpPage />
         </Route>
 
-        <Route exact path="/images/">
+        <Route exact path="/images">
           <CreateImagePage />
         </Route>
 

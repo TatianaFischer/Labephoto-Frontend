@@ -30,16 +30,15 @@ const LoginPage = () => {
       emailOrNick: emailOrNick,
       password: password,
     };
-    console.log(body);
+
     try {
       const response = await axios.post(
-        `http://localhost:3001/users/login`,
+        `http://localhost:3000/users/login`,
         body
       );
 
       localStorage.setItem("token", response.data.token);
-      console.log(response.data);
-      console.log(response.data.token);
+
       alert("Logado com sucesso!");
 
       history.push("/images/feed");

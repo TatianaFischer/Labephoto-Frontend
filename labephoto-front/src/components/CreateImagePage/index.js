@@ -34,25 +34,43 @@ const CreateImagePage = () => {
   const [subtitle, setSubtitle] = useState("");
   const [file, setFile] = useState("");
   const [collection, setCollection] = useState("");
-  const [tag, setTag] = useState({
-    OLEO: false,
-    AQUARELA: false,
-    PASTEL: false,
-    ACRILICA: false,
-    AREIA: false,
-    DIGITAL: false,
-    OCIDENTAL: false,
-    ORIENTAL: false,
+
+  const [tag, setTag] = useState([]);
+
+  const [tagCheckbox, setTagCheckbox] = useState({
+    OLEO: "",
+    AQUARELA: "",
+    PASTEL: "",
+    ACRILICA: "",
+    AREIA: "",
+    DIGITAL: "",
+    OCIDENTAL: "",
+    ORIENTAL: "",
   });
+
+  const allTags = [
+    "#OLEO",
+    "#AQUARELA",
+    "#PASTEL",
+    "#ACRíLICA",
+    "#AREIA",
+    "#DIGITAL",
+    "#OCIDENTAL",
+    "#ORIENTAL",
+  ];
+
+  const handleChangeCheckbox = (e) => {
+    const { name, value } = e.target;
+    setTagCheckbox({ ...tagCheckbox, [name]: value });
+    setTag([...tag, name]);
+  };
 
   const goToFeedPage = () => {
     history.push("/images/feed");
   };
 
-  const handleInputs = async (event) => {
-    event.preventDefault();
-
-    setTag({ ...tag, [event.target.name]: event.target.checked });
+  const createNewImage = async (e) => {
+    e.preventDefault();
 
     const body = {
       subtitle: subtitle,
@@ -61,28 +79,36 @@ const CreateImagePage = () => {
       tag: tag,
     };
 
+    console.log(body);
     try {
-      const response = await axios.post(`http://localhost:3001/images`, body);
-
+      const response = await axios.post(`http://localhost:3000/images`, body);
+      console.log(response);
       localStorage.setItem("token", response.data.token);
+      console.log(response.data.token);
       alert("Imagem criada com sucesso!");
-      history.push("/images/feed");
+
+      setSubtitle({ subtitle: "" });
+      setFile({ file: "" });
+      setCollection({ collection: "" });
+      history.push("/feed");
     } catch (e) {
       alert("Falha na criação da imagem!");
     }
   };
 
-  const {
-    OLEO,
-    AQUARELA,
-    PASTEL,
-    ACRILICA,
-    AREIA,
-    DIGITAL,
-    OCIDENTAL,
-    ORIENTAL,
-  } = tag;
-  // para dar numero mínimo de tags: const errorRequired = [OLEO].filter((c) => c).length !== 1;
+  const checkboxRendle = allTags.map((item) => {
+    return (
+      <div>
+        <input
+          type="checkbox"
+          name={item}
+          value={tagCheckbox.tem}
+          onChange={handleChangeCheckbox}
+        />
+        <p>{item}</p>
+      </div>
+    );
+  });
 
   return (
     <PageConteiner>
@@ -93,151 +119,68 @@ const CreateImagePage = () => {
         <b>ADICIONAR NOVA IMAGEM AO FEED</b>
       </Tittle>
 
-      <Form onSubmit={handleInputs}>
-        <InputContainer>
-          <TextField
-            label="Título"
-            id="tittle"
-            type="text"
-            style={{ margin: 8 }}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="standard"
-            required
-            fullWidth
-            value={subtitle}
-            onChange={(e) => setSubtitle(e.target.value)}
-          />
-          <TextField
-            label="Link da imagem"
-            id="file"
-            type="url"
-            style={{ margin: 8 }}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="standard"
-            required
-            fullWidth
-            value={file}
-            onChange={(e) => setFile(e.target.value)}
-          />
+      <InputContainer>
+        <TextField
+          label="Título"
+          id="tittle"
+          type="text"
+          style={{ margin: 8 }}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="standard"
+          required
+          fullWidth
+          value={subtitle}
+          onChange={(e) => setSubtitle(e.target.value)}
+        />
+        <TextField
+          label="Link da imagem"
+          id="file"
+          type="url"
+          style={{ margin: 8 }}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="standard"
+          required
+          fullWidth
+          value={file}
+          onChange={(e) => setFile(e.target.value)}
+        />
 
-          <TextField
-            label="Coleção"
-            id="collection"
-            type="text"
-            style={{ margin: 8 }}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="standard"
-            required
-            fullWidth
-            value={collection}
-            onChange={(e) => setCollection(e.target.value)}
-          />
+        <TextField
+          label="Coleção"
+          id="collection"
+          type="text"
+          style={{ margin: 8 }}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="standard"
+          required
+          fullWidth
+          value={collection}
+          onChange={(e) => setCollection(e.target.value)}
+        />
 
-          <CheckboxStyle>
-            <FormControl required>
-              <FormLabel>Opções de TAGS:</FormLabel>
-              <FormGroup aria-label="position" row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="OLEO"
-                      checked={OLEO}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#ÓLEO"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="AQUARELA"
-                      checked={AQUARELA}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#AQUARELA"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="PASTEL"
-                      checked={PASTEL}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#PASTEL"
-                />
+        <CheckboxStyle>
+          <FormControl required>
+            <FormLabel>Opções de TAGS:</FormLabel>
+            <FormGroup row>{checkboxRendle}</FormGroup>
+            <FormHelperText>
+              Escolha as tags que descrevam sua arte!
+            </FormHelperText>
+          </FormControl>
+        </CheckboxStyle>
+      </InputContainer>
+      <Button onClick={createNewImage}>
+        <b>Adicionar</b>
+      </Button>
 
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="ACRILICA"
-                      checked={ACRILICA}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#ACRÍLICA"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="AREIA"
-                      checked={AREIA}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#AREIA"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="DIGITAL"
-                      checked={DIGITAL}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#DIGITAL"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="OCIDENTAL"
-                      checked={OCIDENTAL}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#OCIDENTAL"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="ORIENTAL"
-                      checked={ORIENTAL}
-                      onChange={handleInputs}
-                    />
-                  }
-                  label="#ORIENTAL"
-                />
-              </FormGroup>
-              <FormHelperText>
-                Escolha as tags que descrevam sua arte!
-              </FormHelperText>
-            </FormControl>
-          </CheckboxStyle>
-        </InputContainer>
-        <Button onClick={goToFeedPage}>
-          <b>Adicionar</b>
-        </Button>
-      </Form>
       <Footer>
         <ButtonIncon>
           <HomeIcon

@@ -26,11 +26,6 @@ export const InputContainer = styled.div`
   color: rgb(95, 99, 104);
 `;
 
-export const Form = styled.form`
-  margin: 0 0 100px 0;
-  font-size: 10px;
-`;
-
 export const CheckboxStyle = styled.div`
   margin-top: 10px;
   max-width: 300px;
@@ -46,6 +41,7 @@ export const Button = styled.button`
   font-family: sans-serif;
   font-size: 16px;
   margin-top: 16px;
+  margin-bottom: 100px;
   border: none;
   box-shadow: 0 0 0 0;
   border: 0 none;

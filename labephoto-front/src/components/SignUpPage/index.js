@@ -38,7 +38,7 @@ const SignUpPage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/users/signup`,
+        `http://localhost:3000/users/signup`,
         body
       );
 
