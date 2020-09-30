@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import useAuthorization from "../../hooks/useAuthorization";
+import axios from "axios";
 import {
   PageConteiner,
   Logo,
@@ -33,7 +34,7 @@ const CreateImagePage = () => {
   const [subtitle, setSubtitle] = useState("");
   const [file, setFile] = useState("");
   const [collection, setCollection] = useState("");
-  const [checkbox, setCheckbox] = useState({
+  const [tag, setTag] = useState({
     OLEO: false,
     AQUARELA: false,
     PASTEL: false,
@@ -48,8 +49,27 @@ const CreateImagePage = () => {
     history.push("/images/feed");
   };
 
-  const handleCheckbox = (event) => {
-    setCheckbox({ ...checkbox, [event.target.name]: event.target.checked });
+  const handleInputs = async (event) => {
+    event.preventDefault();
+
+    setTag({ ...tag, [event.target.name]: event.target.checked });
+
+    const body = {
+      subtitle: subtitle,
+      file: file,
+      collection: collection,
+      tag: tag,
+    };
+
+    try {
+      const response = await axios.post(`http://localhost:3001/images`, body);
+
+      localStorage.setItem("token", response.data.token);
+      alert("Imagem criada com sucesso!");
+      history.push("/images/feed");
+    } catch (e) {
+      alert("Falha na criação da imagem!");
+    }
   };
 
   const {
@@ -61,7 +81,7 @@ const CreateImagePage = () => {
     DIGITAL,
     OCIDENTAL,
     ORIENTAL,
-  } = checkbox;
+  } = tag;
   // para dar numero mínimo de tags: const errorRequired = [OLEO].filter((c) => c).length !== 1;
 
   return (
@@ -73,7 +93,7 @@ const CreateImagePage = () => {
         <b>ADICIONAR NOVA IMAGEM AO FEED</b>
       </Tittle>
 
-      <Form>
+      <Form onSubmit={handleInputs}>
         <InputContainer>
           <TextField
             label="Título"
@@ -131,7 +151,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="OLEO"
                       checked={OLEO}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#ÓLEO"
@@ -141,7 +161,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="AQUARELA"
                       checked={AQUARELA}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#AQUARELA"
@@ -151,7 +171,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="PASTEL"
                       checked={PASTEL}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#PASTEL"
@@ -162,7 +182,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="ACRILICA"
                       checked={ACRILICA}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#ACRÍLICA"
@@ -172,7 +192,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="AREIA"
                       checked={AREIA}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#AREIA"
@@ -182,7 +202,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="DIGITAL"
                       checked={DIGITAL}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#DIGITAL"
@@ -192,7 +212,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="OCIDENTAL"
                       checked={OCIDENTAL}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#OCIDENTAL"
@@ -202,7 +222,7 @@ const CreateImagePage = () => {
                     <Checkbox
                       name="ORIENTAL"
                       checked={ORIENTAL}
-                      onChange={handleCheckbox}
+                      onChange={handleInputs}
                     />
                   }
                   label="#ORIENTAL"
