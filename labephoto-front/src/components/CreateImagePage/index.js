@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import useAuthorization from "../../hooks/useAuthorization";
 import {
   PageConteiner,
   Logo,
@@ -9,6 +10,8 @@ import {
   ButtonIncon,
   Footer,
   Legend,
+  Form,
+  CheckboxStyle,
 } from "./styles";
 import LogoImage from "./logo-color.png";
 //material ui:
@@ -25,109 +28,196 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 const CreateImagePage = () => {
   let history = useHistory();
+  useAuthorization();
+
+  const [subtitle, setSubtitle] = useState("");
+  const [file, setFile] = useState("");
+  const [collection, setCollection] = useState("");
+  const [checkbox, setCheckbox] = useState({
+    OLEO: false,
+    AQUARELA: false,
+    PASTEL: false,
+    ACRILICA: false,
+    AREIA: false,
+    DIGITAL: false,
+    OCIDENTAL: false,
+    ORIENTAL: false,
+  });
 
   const goToFeedPage = () => {
     history.push("/images/feed");
   };
+
+  const handleCheckbox = (event) => {
+    setCheckbox({ ...checkbox, [event.target.name]: event.target.checked });
+  };
+
+  const {
+    OLEO,
+    AQUARELA,
+    PASTEL,
+    ACRILICA,
+    AREIA,
+    DIGITAL,
+    OCIDENTAL,
+    ORIENTAL,
+  } = checkbox;
+  // para dar numero mínimo de tags: const errorRequired = [OLEO].filter((c) => c).length !== 1;
+
   return (
     <PageConteiner>
       <header>
         <Logo src={LogoImage} />
       </header>
       <Tittle>
-        <b>Adicionar nova imagem no feed</b>
+        <b>ADICIONAR NOVA IMAGEM AO FEED</b>
       </Tittle>
 
-      <InputContainer>
-        <TextField
-          label="Título"
-          id="tittle"
-          type="text"
-          placeholder="Título"
-          style={{ margin: 8 }}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          required
-          fullWidth
-        />
-        <TextField
-          label="Link da imagem"
-          id="url"
-          type="url"
-          placeholder="www.image.com.br"
-          style={{ margin: 8 }}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          required
-          fullWidth
-        />
+      <Form>
+        <InputContainer>
+          <TextField
+            label="Título"
+            id="tittle"
+            type="text"
+            style={{ margin: 8 }}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="standard"
+            required
+            fullWidth
+            value={subtitle}
+            onChange={(e) => setSubtitle(e.target.value)}
+          />
+          <TextField
+            label="Link da imagem"
+            id="file"
+            type="url"
+            style={{ margin: 8 }}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="standard"
+            required
+            fullWidth
+            value={file}
+            onChange={(e) => setFile(e.target.value)}
+          />
 
-        <TextField
-          label="Coleção"
-          id="collection"
-          type="text"
-          placeholder="Coleção"
-          style={{ margin: 8 }}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          required
-          fullWidth
-        />
+          <TextField
+            label="Coleção"
+            id="collection"
+            type="text"
+            style={{ margin: 8 }}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="standard"
+            required
+            fullWidth
+            value={collection}
+            onChange={(e) => setCollection(e.target.value)}
+          />
 
-        <FormControl component="fieldset">
-          <FormLabel component="legend">TAGS da Imagem:</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox name="OLEO" />}
-              label="#ÓLEO"
-            />
-            <FormControlLabel
-              control={<Checkbox name="AQUARELA" />}
-              label="#AQUARELA"
-            />
-            <FormControlLabel
-              control={<Checkbox name="PASTEL" />}
-              label="#PASTEL"
-            />
+          <CheckboxStyle>
+            <FormControl required>
+              <FormLabel>Opções de TAGS:</FormLabel>
+              <FormGroup aria-label="position" row>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="OLEO"
+                      checked={OLEO}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#ÓLEO"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="AQUARELA"
+                      checked={AQUARELA}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#AQUARELA"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="PASTEL"
+                      checked={PASTEL}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#PASTEL"
+                />
 
-            <FormControlLabel
-              control={<Checkbox name="ACRILICA" />}
-              label="#ACRÍLICA"
-            />
-            <FormControlLabel
-              control={<Checkbox name="AREIA" />}
-              label="#AREIA"
-            />
-            <FormControlLabel
-              control={<Checkbox name="DIGITAL" />}
-              label="#DIGITAL"
-            />
-            <FormControlLabel
-              control={<Checkbox name="OCIDENTAL" />}
-              label="#OCIDENTAL"
-            />
-            <FormControlLabel
-              control={<Checkbox name="ORIENTAL" />}
-              label="#ORIENTAL"
-            />
-          </FormGroup>
-          <FormHelperText>
-            Escolha as tags que descrevem sua arte!
-          </FormHelperText>
-        </FormControl>
-      </InputContainer>
-      <Button>
-        <b>Adicionar</b>
-      </Button>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="ACRILICA"
+                      checked={ACRILICA}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#ACRÍLICA"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="AREIA"
+                      checked={AREIA}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#AREIA"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="DIGITAL"
+                      checked={DIGITAL}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#DIGITAL"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="OCIDENTAL"
+                      checked={OCIDENTAL}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#OCIDENTAL"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="ORIENTAL"
+                      checked={ORIENTAL}
+                      onChange={handleCheckbox}
+                    />
+                  }
+                  label="#ORIENTAL"
+                />
+              </FormGroup>
+              <FormHelperText>
+                Escolha as tags que descrevam sua arte!
+              </FormHelperText>
+            </FormControl>
+          </CheckboxStyle>
+        </InputContainer>
+        <Button onClick={goToFeedPage}>
+          <b>Adicionar</b>
+        </Button>
+      </Form>
       <Footer>
         <ButtonIncon>
           <HomeIcon

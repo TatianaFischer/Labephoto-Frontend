@@ -7,8 +7,8 @@ export const PageConteiner = styled.div`
   font-family: sans-serif;
 `;
 export const Logo = styled.img`
-  width: 240px;
-  height: 40px;
+  width: 300px;
+  height: 50px;
   margin-top: 88px;
   margin-bottom: 28px;
 `;
@@ -22,8 +22,18 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 328px;
-  margin: 0 0 80px 0;
+
   color: rgb(95, 99, 104);
+`;
+
+export const Form = styled.form`
+  margin: 0 0 100px 0;
+  font-size: 10px;
+`;
+
+export const CheckboxStyle = styled.div`
+  margin-top: 10px;
+  max-width: 300px;
 `;
 export const Button = styled.button`
   width: 328px;
