@@ -11,7 +11,7 @@
 - :rocket: [Sobre o Projeto](#rocket-sobre-o-projeto)
 - 👨‍💻️ [Tecnogias utilizadas](#%EF%B8%8F-tecnogias-utilizadas)
 - 📦️ [Como utilizar o projeto](#%EF%B8%8F-como-utilizar-o-projeto)
-- 🤔️ [Como contribuir](#%EF%B8%8F-como-contribuir)
+
 
 ---
 
