@@ -4,7 +4,7 @@
 
 <p>
  Status do Projeto: Em desenvolvimento :warning:
- > O que falta?
+  O que falta?
  - Finalizar o endpoint de criar imagem;
  - Fazer o endpoint de pegar uma imagem pelo ID: fazer modal com detalhes de cada imagem ao clicar;
 </p>
