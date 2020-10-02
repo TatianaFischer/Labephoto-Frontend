@@ -8,7 +8,7 @@ function useAuthorization() {
 
     if (!token) {
       alert("Faça Login");
-      history.replace("/login?error=nologin");
+      history.replace("/users/login?error=nologin");
     }
   }, [history]);
 }

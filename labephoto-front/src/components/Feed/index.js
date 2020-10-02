@@ -43,10 +43,10 @@ const Feed = () => {
   const getFeed = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/images/feed`,
+        `http://localhost:3000/images/feed`,
         axiosConfig
       );
-      console.log(response.data.result);
+      // console.log(response.data.result);
       setImages(response.data.result);
     } catch (e) {
       console.log(e);
