@@ -3,10 +3,12 @@
 </h1>
 
 <p>
- Status do Projeto: Em desenvolvimento :warning:
-  O que falta?
- - Finalizar o endpoint de criar imagem;
- - Fazer o endpoint de pegar uma imagem pelo ID: fazer modal com detalhes de cada imagem ao clicar;
+ >> Status do Projeto: Em desenvolvimento :warning: <<
+  <ul> O que falta?
+<li> - Finalizar o endpoint de criar imagem;</li>
+ <li>- Fazer o endpoint de pegar uma imagem pelo ID: fazer modal com detalhes de cada imagem ao clicar;</li>
+   <li> Deploy através da AWS;
+   </ul>
 </p>
 
 # Indice
