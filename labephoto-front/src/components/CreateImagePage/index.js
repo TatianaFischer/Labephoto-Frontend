@@ -79,18 +79,29 @@ const CreateImagePage = () => {
       tag: tag,
     };
 
+    const token = localStorage.getItem("token");
+
+    const axiosConfig = {
+      headers: {
+        Authorization: token,
+      },
+    };
     console.log(body);
+    console.log(axiosConfig);
     try {
-      const response = await axios.post(`http://localhost:3000/images`, body);
+      const response = await axios.post(
+        `http://localhost:3000/images/`,
+        body,
+        axiosConfig
+      );
       console.log(response);
-      localStorage.setItem("token", response.data.token);
-      console.log(response.data.token);
+
       alert("Imagem criada com sucesso!");
 
       setSubtitle({ subtitle: "" });
       setFile({ file: "" });
       setCollection({ collection: "" });
-      history.push("/feed");
+      history.push("/images/feed");
     } catch (e) {
       alert("Falha na criação da imagem!");
     }
