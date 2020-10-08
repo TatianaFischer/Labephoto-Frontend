@@ -5,8 +5,7 @@
 <p>
  >> Status do Projeto: Em desenvolvimento :warning: <<
   <ul> O que falta?
-<li> - Finalizar o endpoint de criar imagem;</li>
- <li>- Fazer o endpoint de pegar uma imagem pelo ID: fazer modal com detalhes de cada imagem ao clicar;</li>
+ <li>- Fazer modal com detalhes de cada imagem ao clicar;</li>
    <li> Deploy através da AWS;
    </ul>
 </p>
