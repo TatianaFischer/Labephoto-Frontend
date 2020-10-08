@@ -4,10 +4,13 @@
 
 <p>
  >> Status do Projeto: Em desenvolvimento :warning: <<
-  <ul> O que falta?
- <li>- Fazer modal com detalhes de cada imagem ao clicar;</li>
-   <li> Deploy através da AWS;
-   </ul>
+  <ol> O que falta? (em ordem de prioridade)
+ <li>Fazer modal com detalhes de cada imagem ao clicar;</li>
+   <li> Tags na página de detalhes da imagem</li>
+   <li> Deploy através da AWS;</li>
+   <li> arrumar o layout do checkbox do formulário de criar imagem usando Material UI</li>
+   
+   </ol>
 </p>
 
 # Indice
