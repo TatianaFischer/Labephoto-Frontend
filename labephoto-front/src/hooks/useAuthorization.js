@@ -3,14 +3,13 @@ import { useEffect } from "react";
 
 function useAuthorization() {
   const history = useHistory();
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
-
-    if (!token) {
+    if (token === null) {
       alert("Faça Login");
-      history.replace("/users/login?error=nologin");
+      history.push("/users/login");
     }
-  }, [history]);
+  }, []);
 }
 
 export default useAuthorization;

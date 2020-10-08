@@ -7,8 +7,8 @@ export const PageConteiner = styled.div`
   font-family: sans-serif;
 `;
 export const Logo = styled.img`
-  width: 300px;
-  height: 50px;
+  width: 250px;
+  height: 40px;
   margin-top: 88px;
   margin-bottom: 28px;
 `;
@@ -23,7 +23,7 @@ export const ImagesContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 810px;
+  width: 300px;
   flex-direction: row;
   margin-bottom: 85px;
 
@@ -31,14 +31,23 @@ export const ImagesContainer = styled.div`
 `;
 
 export const FeedImage = styled.img`
-  width: 250px;
-  height: 250px;
-  margin: 10px 10px 0px 5px;
+  width: 85px;
+  height: 85px;
+  margin: 5px 5px 0px 5px;
 
   :hover {
     opacity: 0.5;
     cursor: pointer;
   }
+`;
+
+export const Subtitle = styled.h6`
+  margin: 0;
+  font-size: 5px;
+  width: 85px;
+  min-height: 10px;
+  padding: 3px;
+  color: rgb(95, 99, 104, 0.35);
 `;
 
 export const Footer = styled.div`
@@ -78,12 +87,6 @@ export const ButtonIcon = styled.button`
 `;
 
 export const Legend = styled.span`
-  font-size: 12px;
+  font-size: 10px;
   color: rgb(95, 99, 104);
-`;
-
-export const Subtitle = styled.h6`
-  margin: 0 0 0 10px;
-  padding: 0;
-  color: rgb(95, 99, 104, 0.35);
 `;
