@@ -6,7 +6,7 @@ import SignUpPage from "../components/SignUpPage";
 import LoginPage from "../components/LoginPage";
 import Feed from "../components/Feed";
 import CreateImagePage from "../components/CreateImagePage";
-// import ImageDetailsPage from "../components/ImageDetailsPage";
+import ImageModal from "../components/Feed/ImageModal";
 
 const Router = () => {
   return (
@@ -25,6 +25,10 @@ const Router = () => {
 
         <Route exact path="/images/feed">
           <Feed />
+        </Route>
+
+        <Route exact path="/images/:imageId">
+          <ImageModal />
         </Route>
       </Switch>
     </BrowserRouter>
