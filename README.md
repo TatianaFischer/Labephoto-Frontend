@@ -28,6 +28,8 @@
 
 Este projeto de Front-end Web foi desenvolvido em ReactJS com JS.
 
+Projeto desenvolvido durante o bootcamp da [LABENU](https://www.labenu.com.br/)
+
 ---
 
 ## 👨‍💻️ Tecnogias utilizadas
