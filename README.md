@@ -2,6 +2,7 @@
 🎨🎨🎨 Labephoto-Frontend - PROJETO FULL STACK
 </h1>
 
+
 <p>
  >> Status do Projeto: Em desenvolvimento :warning: <<
   <ol> O que falta? (em ordem de prioridade)
