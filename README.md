@@ -3,8 +3,8 @@
 </h1>
 
 
-<p>
- >> Status do Projeto: Em desenvolvimento :warning: <<
+
+ >>> Status do Projeto: Em desenvolvimento :warning: <<
   <ol> O que falta? (em ordem de prioridade)
  <li>Fazer modal com detalhes de cada imagem ao clicar;</li>
    <li> Tags na página de detalhes da imagem</li>
@@ -12,7 +12,7 @@
    <li> arrumar o layout do checkbox do formulário de criar imagem usando Material UI</li>
    
    </ol>
-</p>
+
 
 # Indice
 
